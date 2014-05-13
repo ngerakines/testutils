@@ -20,6 +20,9 @@ func NewDirectoryManager() *directoryManager {
 		panic(err.Error())
 	}
 	cacheDirectory := filepath.Join(pwd, uuid.New())
-	os.MkdirAll(cacheDirectory, 00777)
+	err = os.MkdirAll(cacheDirectory, 0777)
+	if err != nil {
+		panic(err.Error())
+	}
 	return &directoryManager{cacheDirectory}
 }
