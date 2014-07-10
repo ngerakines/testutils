@@ -6,15 +6,15 @@ import (
 	"path/filepath"
 )
 
-type directoryManager struct {
+type DirectoryManager struct {
 	Path string
 }
 
-func (dm *directoryManager) Close() {
+func (dm *DirectoryManager) Close() {
 	os.RemoveAll(dm.Path)
 }
 
-func NewDirectoryManager() *directoryManager {
+func NewDirectoryManager() *DirectoryManager {
 	pwd, err := os.Getwd()
 	if err != nil {
 		panic(err.Error())
@@ -24,5 +24,5 @@ func NewDirectoryManager() *directoryManager {
 	if err != nil {
 		panic(err.Error())
 	}
-	return &directoryManager{cacheDirectory}
+	return &DirectoryManager{cacheDirectory}
 }
